@@ -22,7 +22,10 @@ abstract class NoteDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: NoteDatabase? = null
+
+        // creating a database instance
         fun getInstance(context: Context): NoteDatabase {
+            // ensure that only one thread can execute it at a time
             synchronized(this) {
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,

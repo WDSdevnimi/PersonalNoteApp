@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity()
+//class that primarily holds data
 data class Task(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "taskId")

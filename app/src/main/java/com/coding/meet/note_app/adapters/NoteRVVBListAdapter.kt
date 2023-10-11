@@ -119,7 +119,7 @@ class NoteRVVBListAdapter(
     }
 
 
-
+    //handle differences between old and new items in the list
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id

@@ -43,6 +43,7 @@ fun Dialog.setupDialog(layoutResId: Int){
     setCancelable(false)
 }
 
+// It checks if the text is empty, sets an error message if it is, and returns true if the input is valid
 fun validateEditText(editText: EditText, textTextInputLayout: TextInputLayout): Boolean {
     return when {
         editText.text.toString().trim().isEmpty() -> {
@@ -55,6 +56,8 @@ fun validateEditText(editText: EditText, textTextInputLayout: TextInputLayout): 
         }
     }
 }
+
+//This function clears the text of an EditText and resets the error message of the associated TextInputLayout.
 fun clearEditText(editText: EditText, textTextInputLayout: TextInputLayout) {
     editText.text = null
     textTextInputLayout.error = null

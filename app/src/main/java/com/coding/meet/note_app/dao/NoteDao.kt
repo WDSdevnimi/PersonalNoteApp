@@ -4,7 +4,7 @@ import androidx.room.*
 import com.coding.meet.note_app.models.Task
 import kotlinx.coroutines.flow.Flow
 
-@Dao
+@Dao //data access object for rmm db
 interface NoteDao {
 
 
@@ -22,6 +22,7 @@ interface NoteDao {
     )
     fun getNoteListSortByTaskDate(isAsc: Boolean) : Flow<List<Task>>
 
+    //method to insert data into the database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(task: Task): Long
 

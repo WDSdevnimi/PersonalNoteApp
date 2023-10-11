@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    // Initializes custom dialogs for adding, updating, and loading tasks.
     private val addNoteDialog: Dialog by lazy {
         Dialog(this, R.style.DialogCustomTheme).apply {
             setupDialog(R.layout.add_note_dialog)
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this)[NoteViewModel::class.java]
     }
 
+    //Initializes a MutableLiveData to keep track of whether the view should display tasks as a list or grid.
     private val isListMutableLiveData = MutableLiveData<Boolean>().apply {
         postValue(true)
     }
@@ -157,6 +159,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update Task End
 
+        //Observes changes in the layout preference and updates the RecyclerView layout accordingly
         isListMutableLiveData.observe(this){
             if (it){
                 mainBinding.taskRV.layoutManager = LinearLayoutManager(
@@ -171,6 +174,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //Toggles between list and grid view when the user clicks on an icon.
         mainBinding.listOrGridImg.setOnClickListener {
             isListMutableLiveData.postValue(!isListMutableLiveData.value!!)
         }
